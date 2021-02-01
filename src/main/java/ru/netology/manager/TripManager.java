@@ -4,6 +4,7 @@ import ru.netology.domain.Trip;
 import ru.netology.repository.TripRepository;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class TripManager {
     private TripRepository repository;
@@ -16,7 +17,7 @@ public class TripManager {
         repository.save(trip);
     }
 
-    public Trip[] findAll(String from, String to) {
+    public Trip[] findAll(String from, String to, Comparator<Trip> comparator) {
         Trip[] trips = repository.findAll();
         Trip[] result = new Trip[0];
         for (Trip trip : trips) {
@@ -29,7 +30,7 @@ public class TripManager {
                 result = tmp;
             }
         }
-        Arrays.sort(result);
+        Arrays.sort(result, comparator);
         return result;
     }
 

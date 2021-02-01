@@ -3,6 +3,7 @@ package ru.netology.manager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Trip;
+import ru.netology.domain.TripComparator;
 import ru.netology.repository.TripRepository;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -10,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 public class TripManagerTest {
     private TripRepository repository = new TripRepository();
     private TripManager manager = new TripManager(repository);
+    private TripComparator comparator = new TripComparator();
 
     private Trip CIT_ALA_1st_trip = new Trip(1, 2939, "CIT", "ALA", 85);
     private Trip CIT_ALA_2nd_trip = new Trip(2, 1667, "CIT", "ALA", 55);
@@ -35,7 +37,7 @@ public class TripManagerTest {
     @Test
     public void shouldNotFindTrips() {
         Trip[] expected = new Trip[]{};
-        Trip[] actual = manager.findAll("", "");
+        Trip[] actual = manager.findAll("", "", comparator);
 
         assertArrayEquals(expected, actual);
     }
@@ -43,7 +45,7 @@ public class TripManagerTest {
     @Test
     public void shouldNotFindALA_CITTrips() {
         Trip[] expected = new Trip[]{};
-        Trip[] actual = manager.findAll("ALA", "CIT");
+        Trip[] actual = manager.findAll("ALA", "CIT", comparator);
 
         assertArrayEquals(expected, actual);
     }
@@ -51,7 +53,7 @@ public class TripManagerTest {
     @Test
     public void shouldFindSCO_CITTrip() {
         Trip[] expected = new Trip[]{SCO_CIT_1th_trip};
-        Trip[] actual = manager.findAll("SCO", "CIT");
+        Trip[] actual = manager.findAll("SCO", "CIT", comparator);
 
         assertArrayEquals(expected, actual);
     }
@@ -59,15 +61,15 @@ public class TripManagerTest {
     @Test
     public void shouldFindCIT_NQZTrip() {
         Trip[] expected = new Trip[]{CIT_NQZ_1th_trip, CIT_NQZ_2nd_trip};
-        Trip[] actual = manager.findAll("CIT", "NQZ");
+        Trip[] actual = manager.findAll("CIT", "NQZ", comparator);
 
         assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldFindCIT_ALATrips() {
-        Trip[] expected = new Trip[]{CIT_ALA_4th_trip, CIT_ALA_2nd_trip, CIT_ALA_3rd_trip, CIT_ALA_1st_trip};
-        Trip[] actual = manager.findAll("CIT", "ALA");
+        Trip[] expected = new Trip[]{CIT_ALA_2nd_trip, CIT_ALA_3rd_trip, CIT_ALA_4th_trip, CIT_ALA_1st_trip};
+        Trip[] actual = manager.findAll("CIT", "ALA", comparator);
 
         assertArrayEquals(expected, actual);
     }

@@ -18,4 +18,5 @@ public class Trip implements Comparable<Trip> {
     public int compareTo(Trip o) {
         return price - o.price;
     }
+
 }

@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import ru.netology.domain.Trip;
 import ru.netology.repository.TripRepository;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class TripManagerTest {
@@ -39,8 +37,6 @@ public class TripManagerTest {
         Trip[] expected = new Trip[]{};
         Trip[] actual = manager.findAll("", "");
 
-        Arrays.sort(actual);
-
         assertArrayEquals(expected, actual);
     }
 
@@ -48,8 +44,6 @@ public class TripManagerTest {
     public void shouldNotFindALA_CITTrips() {
         Trip[] expected = new Trip[]{};
         Trip[] actual = manager.findAll("ALA", "CIT");
-
-        Arrays.sort(actual);
 
         assertArrayEquals(expected, actual);
     }
@@ -59,8 +53,6 @@ public class TripManagerTest {
         Trip[] expected = new Trip[]{SCO_CIT_1th_trip};
         Trip[] actual = manager.findAll("SCO", "CIT");
 
-        Arrays.sort(actual);
-
         assertArrayEquals(expected, actual);
     }
 
@@ -69,8 +61,6 @@ public class TripManagerTest {
         Trip[] expected = new Trip[]{CIT_NQZ_1th_trip, CIT_NQZ_2nd_trip};
         Trip[] actual = manager.findAll("CIT", "NQZ");
 
-        Arrays.sort(actual);
-
         assertArrayEquals(expected, actual);
     }
 
@@ -78,8 +68,6 @@ public class TripManagerTest {
     public void shouldFindCIT_ALATrips() {
         Trip[] expected = new Trip[]{CIT_ALA_4th_trip, CIT_ALA_2nd_trip, CIT_ALA_3rd_trip, CIT_ALA_1st_trip};
         Trip[] actual = manager.findAll("CIT", "ALA");
-
-        Arrays.sort(actual);
 
         assertArrayEquals(expected, actual);
     }

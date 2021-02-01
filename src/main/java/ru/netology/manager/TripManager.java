@@ -3,6 +3,8 @@ package ru.netology.manager;
 import ru.netology.domain.Trip;
 import ru.netology.repository.TripRepository;
 
+import java.util.Arrays;
+
 public class TripManager {
     private TripRepository repository;
 
@@ -27,6 +29,7 @@ public class TripManager {
                 result = tmp;
             }
         }
+        Arrays.sort(result);
         return result;
     }
 

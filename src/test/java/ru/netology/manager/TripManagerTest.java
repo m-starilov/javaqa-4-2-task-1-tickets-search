@@ -23,7 +23,7 @@ public class TripManagerTest {
     private Trip NQZ_CIT_1st_trip = new Trip(8, 1667, "NQZ", "CIT", 90);
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         manager.add(CIT_ALA_1st_trip);
         manager.add(CIT_ALA_2nd_trip);
         manager.add(CIT_ALA_3rd_trip);
@@ -35,7 +35,7 @@ public class TripManagerTest {
     }
 
     @Test
-    public void shouldNotFindTrips(){
+    public void shouldNotFindTrips() {
         Trip[] expected = new Trip[]{};
         Trip[] actual = manager.findAll("", "");
 
@@ -45,7 +45,7 @@ public class TripManagerTest {
     }
 
     @Test
-    public void shouldNotFindALA_CITTrips(){
+    public void shouldNotFindALA_CITTrips() {
         Trip[] expected = new Trip[]{};
         Trip[] actual = manager.findAll("ALA", "CIT");
 
@@ -55,7 +55,7 @@ public class TripManagerTest {
     }
 
     @Test
-    public void shouldFindSCO_CITTrip(){
+    public void shouldFindSCO_CITTrip() {
         Trip[] expected = new Trip[]{SCO_CIT_1th_trip};
         Trip[] actual = manager.findAll("SCO", "CIT");
 
@@ -65,7 +65,7 @@ public class TripManagerTest {
     }
 
     @Test
-    public void shouldFindCIT_NQZTrip(){
+    public void shouldFindCIT_NQZTrip() {
         Trip[] expected = new Trip[]{CIT_NQZ_1th_trip, CIT_NQZ_2nd_trip};
         Trip[] actual = manager.findAll("CIT", "NQZ");
 
@@ -75,7 +75,7 @@ public class TripManagerTest {
     }
 
     @Test
-    public void shouldFindCIT_ALATrips(){
+    public void shouldFindCIT_ALATrips() {
         Trip[] expected = new Trip[]{CIT_ALA_4th_trip, CIT_ALA_2nd_trip, CIT_ALA_3rd_trip, CIT_ALA_1st_trip};
         Trip[] actual = manager.findAll("CIT", "ALA");
 

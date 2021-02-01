@@ -10,15 +10,15 @@ public class TripManager {
         this.repository = repository;
     }
 
-    public void add(Trip trip){
+    public void add(Trip trip) {
         repository.save(trip);
     }
 
-    public Trip[] findAll(String from, String to){
+    public Trip[] findAll(String from, String to) {
         Trip[] trips = repository.findAll();
         Trip[] result = new Trip[0];
-        for (Trip trip : trips){
-            if (trip.getDeparture().equals(from) && trip.getArrival().equals(to)){
+        for (Trip trip : trips) {
+            if (trip.getDeparture().equals(from) && trip.getArrival().equals(to)) {
                 int length = result.length + 1;
                 Trip[] tmp = new Trip[length];
                 System.arraycopy(result, 0, tmp, 0, result.length);
@@ -30,11 +30,11 @@ public class TripManager {
         return result;
     }
 
-    public void deleteById(Trip trip){
+    public void deleteById(Trip trip) {
         repository.removeById(trip.getId());
     }
 
-    public Trip findById(Trip trip){
+    public Trip findById(Trip trip) {
         return repository.findById(trip.getId());
     }
 }
